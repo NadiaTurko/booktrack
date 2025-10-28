@@ -1,12 +1,17 @@
 import { useState } from "react";
 import "./App.css";
+
+import { useDispatch } from "react-redux";
+import { fetchBooks } from "./features/books/booksSlice";
+
 import ShowBooksButton from "./components/Buttons/ShowBooksButton";
+import BooksList from "./components/BooksList/BooksList";
 
 function App() {
-  const [showBooks, setShowBooks] = useState(false);
+  const dispatch = useDispatch();
 
   const handleShowBooks = () => {
-    setShowBooks(true);
+    dispatch(fetchBooks());
   };
 
   return (
@@ -15,6 +20,7 @@ function App() {
         Hello BookTrack 📚
       </h1>
       <ShowBooksButton onClick={handleShowBooks} />
+      <BooksList />
     </div>
   );
 }
