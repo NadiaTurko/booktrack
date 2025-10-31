@@ -54,28 +54,14 @@ npm run preview
 
 ## 🧰 Tech Stack
 
-- ⚛️ **React 18+** — UI development  
-- ⚡ **Vite** — lightning-fast bundler  
-- 🧹 **ESLint** — code quality  
-- 💅 **CSS / Tailwind CSS** *(optional)*  
+-  **React 18+** — UI development  
+-  **Vite** — lightning-fast bundler  
+-  **ESLint** — code quality  
+-  **CSS / Tailwind CSS** *(optional)*  
 
 ---
 
-## 📂 Project Structure
 
-```
-book-tracker/
-├── src/
-│   ├── components/
-│   ├── assets/
-│   ├── App.jsx
-│   └── main.jsx
-├── public/
-├── package.json
-└── vite.config.js
-```
-
----
 
 ## 🚧 Project Status
 
@@ -85,16 +71,3 @@ Planned features include:
 - Search and filtering  
 - Save data in local storage or via API  
 
----
-
-<div align="center">
-
-## 👩‍💻 Author
-
-**Nadiia Romanchuk**  
-Front-end Developer  
-
-[![GitHub](https://img.shields.io/badge/GitHub-000?logo=github&logoColor=white)](https://github.com/your-username)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0a66c2?logo=linkedin&logoColor=white)](#)
-
-</div>
