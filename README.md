@@ -1,18 +1,80 @@
-# React + Vite
+📚 Book Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Book Tracker is a React application built with Vite that helps users track their reading progress, add books to their reading list, and manage their collection.
+(The functionality is currently under development.)
 
-Currently, two official plugins are available:
+⚙️ How to Run the Project
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. Clone the repository
 
-## React Compiler
+Clone this repository to your local machine:
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+git clone https://github.com/your-username/book-tracker.git
 
-Note: This will impact Vite dev & build performances.
 
-## Expanding the ESLint configuration
+Navigate to the project directory:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+cd book-tracker
+
+2. Install dependencies
+
+Install all required dependencies using npm:
+
+npm install
+
+
+💡 You can also use:
+
+yarn install
+
+
+or
+
+pnpm install
+
+3. Run the development server
+
+Start the app in development mode:
+
+npm run dev
+
+
+Once started, open your browser and go to:
+👉 http://localhost:5173
+
+4. Build for production
+
+Create an optimized production build:
+
+npm run build
+
+
+The build files will be generated in the dist/ folder.
+
+5. Preview the production build
+
+To preview the built project locally:
+
+npm run preview
+
+🧰 Tech Stack
+
+React 18+
+
+Vite
+
+ESLint
+
+CSS / Tailwind (optional)
+
+
+🚧 Project Status
+
+This project is in the early development stage.
+Upcoming features include:
+
+Adding and removing books
+
+Search and filtering
+
+Local storage or API data persistence
