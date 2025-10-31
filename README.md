@@ -1,80 +1,100 @@
-📚 Book Tracker
+<div align="center">
 
-Book Tracker is a React application built with Vite that helps users track their reading progress, add books to their reading list, and manage their collection.
-(The functionality is currently under development.)
+# 📚 Book Tracker  
 
-⚙️ How to Run the Project
+### A minimal React + Vite app for tracking your reading progress  
 
-1. Clone the repository
+[![React](https://img.shields.io/badge/React-18+-61dafb?logo=react&logoColor=white)](https://react.dev/)
+[![Vite](https://img.shields.io/badge/Vite-5+-646cff?logo=vite&logoColor=white)](https://vite.dev/)
+[![ESLint](https://img.shields.io/badge/ESLint-configured-4b32c3?logo=eslint&logoColor=white)](https://eslint.org/)
+[![Status](https://img.shields.io/badge/Status-In_Progress-yellow)]()
+[![License](https://img.shields.io/badge/License-MIT-green)]()
 
-Clone this repository to your local machine:
+</div>
 
+---
+
+## ⚙️ Getting Started
+
+### 1️⃣ Clone the repository
+```bash
 git clone https://github.com/your-username/book-tracker.git
-
-
-Navigate to the project directory:
-
 cd book-tracker
+```
 
-2. Install dependencies
-
-Install all required dependencies using npm:
-
+### 2️⃣ Install dependencies
+```bash
 npm install
+```
+> or  
+> ```bash
+> yarn install
+> ```  
+> ```bash
+> pnpm install
+> ```
 
-
-💡 You can also use:
-
-yarn install
-
-
-or
-
-pnpm install
-
-3. Run the development server
-
-Start the app in development mode:
-
+### 3️⃣ Run in development mode
+```bash
 npm run dev
+```
+Open [http://localhost:5173](http://localhost:5173) to view it in your browser.
 
-
-Once started, open your browser and go to:
-👉 http://localhost:5173
-
-4. Build for production
-
-Create an optimized production build:
-
+### 4️⃣ Build for production
+```bash
 npm run build
+```
 
-
-The build files will be generated in the dist/ folder.
-
-5. Preview the production build
-
-To preview the built project locally:
-
+### 5️⃣ Preview the production build
+```bash
 npm run preview
+```
 
-🧰 Tech Stack
+---
 
-React 18+
+## 🧰 Tech Stack
 
-Vite
+- ⚛️ **React 18+** — UI development  
+- ⚡ **Vite** — lightning-fast bundler  
+- 🧹 **ESLint** — code quality  
+- 💅 **CSS / Tailwind CSS** *(optional)*  
 
-ESLint
+---
 
-CSS / Tailwind (optional)
+## 📂 Project Structure
 
+```
+book-tracker/
+├── src/
+│   ├── components/
+│   ├── assets/
+│   ├── App.jsx
+│   └── main.jsx
+├── public/
+├── package.json
+└── vite.config.js
+```
 
-🚧 Project Status
+---
 
-This project is in the early development stage.
-Upcoming features include:
+## 🚧 Project Status
 
-Adding and removing books
+🛠️ **Currently in development**  
+Planned features include:
+- Add / remove books  
+- Search and filtering  
+- Save data in local storage or via API  
 
-Search and filtering
+---
 
-Local storage or API data persistence
+<div align="center">
+
+## 👩‍💻 Author
+
+**Nadiia Romanchuk**  
+Front-end Developer  
+
+[![GitHub](https://img.shields.io/badge/GitHub-000?logo=github&logoColor=white)](https://github.com/your-username)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0a66c2?logo=linkedin&logoColor=white)](#)
+
+</div>
