@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-function BooksList() {
+const BooksList = () => {
   const { items, status, error } = useSelector((state) => state.books);
 
   if (status === "loading") return <p>Loading books...</p>;
@@ -39,6 +39,6 @@ function BooksList() {
       ))}
     </ul>
   );
-}
+};
 
 export default BooksList;
