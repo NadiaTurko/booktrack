@@ -1,6 +1,6 @@
 import React from "react";
 
-const ShowBooksButton = ({ onClick, disabled, text = "Show Books" }) => {
+const ShowMoreButton = ({ onClick, disabled, text = "Show More" }) => {
   return (
     <button
       onClick={onClick}
@@ -26,4 +26,4 @@ const ShowBooksButton = ({ onClick, disabled, text = "Show Books" }) => {
   );
 };
 
-export default ShowBooksButton;
+export default ShowMoreButton;
