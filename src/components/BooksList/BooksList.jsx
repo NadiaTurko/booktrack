@@ -83,12 +83,6 @@ const BooksList = ({ items = [], status, error }) => {
           );
         })}
       </ul>
-
-      {status === "loading" && (
-        <p className="text-emerald-700 font-medium mt-6 animate-pulse">
-          ⏳ Loading more books...
-        </p>
-      )}
     </div>
   );
 };

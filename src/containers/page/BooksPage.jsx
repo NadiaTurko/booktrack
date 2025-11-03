@@ -10,7 +10,16 @@ const BooksPage = () => {
   return (
     <div className="flex flex-col items-center space-y-6">
       <BooksList items={books} status={status} />
-      <ShowMoreButton onClick={loadMoreBooks} disabled={showMoreDisabled} />
+
+      {status === "succeeded" && books.length > 0 && (
+        <ShowMoreButton onClick={loadMoreBooks} disabled={showMoreDisabled} />
+      )}
+
+      {status === "loading" && (
+        <p className="text-emerald-700 font-medium mt-4 animate-pulse">
+          ⏳ Loading...
+        </p>
+      )}
     </div>
   );
 };
