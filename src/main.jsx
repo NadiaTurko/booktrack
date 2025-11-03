@@ -1,12 +1,12 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import { Provider } from "react-redux";
-import { store } from "./app/store";
+
+import { BooksProvider } from "./context/BooksContext.jsx";
 import App from "./App.jsx";
 
 createRoot(document.getElementById("root")).render(
-  <Provider store={store}>
+  <BooksProvider>
     <App />
-  </Provider>
+  </BooksProvider>
 );

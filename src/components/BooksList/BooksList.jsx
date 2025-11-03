@@ -1,9 +1,6 @@
 import React from "react";
-import { useSelector } from "react-redux";
 
-const BooksList = () => {
-  const { items, status, error } = useSelector((state) => state.books);
-
+const BooksList = ({ items = [], status, error }) => {
   return (
     <div className="mt-10 w-full flex flex-col items-center">
       {error && (
