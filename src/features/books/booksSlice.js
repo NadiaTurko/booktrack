@@ -1,7 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { BASE_API_URL } from "../../constants/api";
-
-const ITEMS_PER_PAGE = 6;
+import { BASE_API_URL, ITEMS_PER_PAGE } from "../../constants/api";
 
 export const fetchBooks = createAsyncThunk(
   "books/fetchBooks",
