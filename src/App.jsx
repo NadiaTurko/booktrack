@@ -1,8 +1,12 @@
-import "./App.css";
-import BooksPage from "./containers/page/BooksPage";
+import { BrowserRouter } from "react-router-dom";
+import AppRoutes from "./routes/appRoutes";
 
 function App() {
-  return <BooksPage />;
+  return (
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter>
+  );
 }
 
 export default App;
