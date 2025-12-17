@@ -1,4 +1,5 @@
 import LogoutButton from "../Buttons/LogoutButton";
+import FavoritesButton from "../Buttons/FavoritesButton";
 
 const Header = ({ onLogout }) => {
   return (
@@ -7,7 +8,10 @@ const Header = ({ onLogout }) => {
         <h1 className="text-lg font-semibold cursor-pointer hover:text-emerald-200 transition">
           📚 Books
         </h1>
-        <LogoutButton onLogout={onLogout} />
+        <div className="flex items-center gap-4">
+          <FavoritesButton />
+          <LogoutButton onLogout={onLogout} />
+        </div>
       </div>
     </header>
   );

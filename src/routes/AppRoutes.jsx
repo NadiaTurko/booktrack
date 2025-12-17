@@ -1,8 +1,9 @@
 import React from "react";
-
 import { Routes, Route } from "react-router-dom";
+
 import LoginPage from "../containers/page/LoginPage";
 import BooksPage from "../containers/page/BooksPage";
+import FavoritesPage from "../containers/page/FavoritesPage";
 import ProtectedRoute from "./ProtectedRoute";
 
 const AppRoutes = () => {
@@ -15,6 +16,15 @@ const AppRoutes = () => {
         element={
           <ProtectedRoute>
             <BooksPage />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/favorites"
+        element={
+          <ProtectedRoute>
+            <FavoritesPage />
           </ProtectedRoute>
         }
       />
