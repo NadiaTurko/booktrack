@@ -13,7 +13,7 @@ const BooksPage = () => {
   return (
     <>
       <Header onLogout={logout} />
-      <div className="flex flex-col items-center space-y-6 mt-6">
+      <div className="flex flex-col items-center space-y-6 mt-6 mb-10">
         <BooksList items={books} status={status} />
 
         {status === "succeeded" && books.length > 0 && (

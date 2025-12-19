@@ -1,18 +1,21 @@
+const STORAGE_KEY = "favoriteBooks";
+
 export const getFavorites = () => {
-  const stored = localStorage.getItem("favoriteBooks");
-  return stored ? JSON.parse(stored) : [];
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    return stored ? JSON.parse(stored) : [];
+  } catch {
+    return [];
+  }
 };
 
 export const toggleFavorite = (bookId) => {
   const favorites = getFavorites();
+
   const updated = favorites.includes(bookId)
     ? favorites.filter((id) => id !== bookId)
     : [...favorites, bookId];
-  localStorage.setItem("favoriteBooks", JSON.stringify(updated));
-  return updated;
-};
 
-export const isFavorite = (bookId) => {
-  const favorites = getFavorites();
-  return favorites.includes(bookId);
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
+  return updated;
 };

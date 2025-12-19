@@ -18,8 +18,12 @@ export const FavoritesProvider = ({ children }) => {
     setFavorites(updated);
   };
 
+  const isFavorite = (bookId) => favorites.includes(bookId);
+
   return (
-    <FavoritesContext.Provider value={{ favorites, toggleFavorite }}>
+    <FavoritesContext.Provider
+      value={{ favorites, toggleFavorite, isFavorite }}
+    >
       {children}
     </FavoritesContext.Provider>
   );

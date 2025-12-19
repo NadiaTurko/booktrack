@@ -3,7 +3,7 @@ import BookCard from "../BookCard/BookCard";
 
 const BooksList = ({ items = [], status, error }) => {
   return (
-    <div className="mt-10 w-full flex flex-col items-center">
+    <div className="mt-10 mb-10 w-full flex flex-col items-center">
       {error && (
         <p className="text-red-600 text-lg font-medium mb-4">
           ❌ Error: {error}

@@ -6,7 +6,7 @@ const ShowMoreButton = ({ onClick, disabled, text = "Show More" }) => {
       onClick={onClick}
       disabled={disabled}
       className={`
-        w-1/3
+        w-1/5
         px-6 py-3
         font-semibold
         rounded-2xl
