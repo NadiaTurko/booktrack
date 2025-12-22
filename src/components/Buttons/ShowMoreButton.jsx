@@ -17,7 +17,7 @@ const ShowMoreButton = ({ onClick, disabled, text = "Show More" }) => {
         ${
           disabled
             ? "bg-emerald-500 opacity-70 cursor-not-allowed shadow-inner"
-            : "bg-gradient-to-r from-emerald-600 via-teal-500 to-emerald-400 hover:scale-105 hover:brightness-110 hover:shadow-2xl"
+            : "bg-linear-to-r from-emerald-600 via-teal-500 to-emerald-400 hover:scale-105 hover:brightness-110 hover:shadow-2xl"
         }
       `}
     >

@@ -33,7 +33,7 @@ const BookCard = ({ book }) => {
         />
       </div>
 
-      <div className="p-5 flex flex-col flex-grow justify-between gap-4">
+      <div className="p-5 flex flex-col grow justify-between gap-4">
         <div className="space-y-1">
           <h3 className="text-xl font-bold text-emerald-800 line-clamp-2">
             {book.title || "Untitled"}

@@ -12,7 +12,7 @@ const FavoriteButton = ({ favorite, onClick }) => (
     {favorite ? (
       "❤️"
     ) : (
-      <span className="inline-block text-transparent bg-clip-text bg-gradient-to-br from-gray-300 via-green-300 to-emerald-400 drop-shadow-sm">
+      <span className="inline-block text-transparent bg-clip-text bg-linear-to-br from-gray-300 via-green-300 to-emerald-400 drop-shadow-sm">
         ❤️
       </span>
     )}
