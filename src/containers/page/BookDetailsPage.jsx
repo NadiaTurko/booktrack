@@ -68,14 +68,14 @@ const BookDetailsPage = () => {
         )}
 
         {book && (
-          <div className="max-w-5xl mx-auto bg-white p-8 rounded-3xl shadow-xl flex flex-col md:flex-row gap-10">
+          <div className="max-w-5xl mx-auto bg-white p-8 rounded-xs shadow-xl flex flex-col md:flex-row gap-10">
             {/* Left side - Cover */}
-            <div className="flex justify-center items-start bg-gray-100 p-4 rounded-xl shadow-inner">
+            <div className="inline-flex justify-center  rounded-xs ">
               {book.covers && book.covers.length > 0 ? (
                 <img
                   src={getCoverUrl(book.covers[0])}
                   alt={book.title}
-                  className="w-72 h-auto rounded-2xl border border-gray-300 shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-xl"
+                  className="max-h-[400px] w-auto rounded-xs p-1 border border-gray-300 shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-xl"
                 />
               ) : (
                 <div className="w-72 h-96 bg-gray-200 rounded-xl flex items-center justify-center text-gray-500">
