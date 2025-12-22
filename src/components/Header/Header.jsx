@@ -4,15 +4,15 @@ import { Link } from "react-router-dom";
 
 const Header = ({ onLogout }) => {
   return (
-    <header className="w-full bg-emerald-600 text-white py-3 shadow-md">
-      <div className="container mx-auto flex justify-between items-center px-4">
+    <header className="w-full bg-gradient-to-r from-emerald-600 to-emerald-700 text-white py-4 shadow-lg">
+      <div className="container mx-auto flex justify-between items-center px-6">
         <Link to="/">
-          <h1 className="text-lg font-semibold cursor-pointer hover:text-emerald-200 transition">
-            📚 Books
+          <h1 className="text-2xl font-bold tracking-wide cursor-pointer hover:text-emerald-200 transition-colors duration-200">
+            📚 BookTrack
           </h1>
         </Link>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
           <FavoritesButton />
           <LogoutButton onLogout={onLogout} />
         </div>

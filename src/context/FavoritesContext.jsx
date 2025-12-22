@@ -18,7 +18,7 @@ export const FavoritesProvider = ({ children }) => {
     setFavorites(updated);
   };
 
-  const isFavorite = (bookId) => favorites.includes(bookId);
+  const isFavorite = (bookId) => favorites.some((fav) => fav.id === bookId);
 
   return (
     <FavoritesContext.Provider

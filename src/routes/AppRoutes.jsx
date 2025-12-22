@@ -4,6 +4,8 @@ import { Routes, Route } from "react-router-dom";
 import LoginPage from "../containers/page/LoginPage";
 import BooksPage from "../containers/page/BooksPage";
 import FavoritesPage from "../containers/page/FavoritesPage";
+import BookDetailsPage from "../containers/page/bookDetailsPage";
+
 import ProtectedRoute from "./ProtectedRoute";
 
 const AppRoutes = () => {
@@ -25,6 +27,15 @@ const AppRoutes = () => {
         element={
           <ProtectedRoute>
             <FavoritesPage />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/books/*"
+        element={
+          <ProtectedRoute>
+            <BookDetailsPage />
           </ProtectedRoute>
         }
       />

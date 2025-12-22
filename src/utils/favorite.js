@@ -12,9 +12,11 @@ export const getFavorites = () => {
 export const toggleFavorite = (bookId) => {
   const favorites = getFavorites();
 
-  const updated = favorites.includes(bookId)
-    ? favorites.filter((id) => id !== bookId)
-    : [...favorites, bookId];
+  const exists = favorites.find((fav) => fav.id === bookId);
+
+  const updated = exists
+    ? favorites.filter((fav) => fav.id !== bookId)
+    : [...favorites, { id: bookId, added: Date.now() }];
 
   localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
   return updated;
