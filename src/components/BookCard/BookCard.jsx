@@ -5,57 +5,40 @@ import ReadMoreButton from "../Buttons/ReadMoreButton";
 import FavoriteButton from "../Buttons/FavoriteButton";
 
 const BookCard = ({ book }) => {
-  const bookId = book.key;
   const { toggleFavorite, isFavorite } = useFavorites();
   const navigate = useNavigate();
 
   const coverUrl = book.cover_i
     ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`
-    : "https://cdn-icons-png.flaticon.com/512/29/29302.png";
+    : "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?auto=format&fit=crop&q=80&w=600";
 
-  const handleReadMore = () => {
+  const handleOpen = () => {
     navigate(`/books${book.key}`);
   };
 
   return (
-    <li
-      className="
-        relative bg-white border border-emerald-200 rounded-2xl shadow-sm
-        hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300
-        w-75 flex flex-col overflow-hidden m-2
-      "
-    >
-      <div className="h-64 w-full overflow-hidden">
+    <li className="group relative w-full h-[420px] bg-white border border-border/40 rounded-xl overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+      {/* Cover */}
+      <div className="h-[260px] w-full bg-muted flex items-center justify-center overflow-hidden">
         <img
           src={coverUrl}
-          alt={book.title || "Book cover"}
-          className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+          alt={book.title}
+          className="max-h-full max-w-full object-contain"
         />
       </div>
 
-      <div className="p-5 flex flex-col grow justify-between gap-4">
-        <div className="space-y-1">
-          <h3 className="text-xl font-bold text-emerald-800 line-clamp-2">
-            {book.title || "Untitled"}
-          </h3>
+      {/* Content */}
+      <div className="p-4 flex flex-col h-[160px]">
+        <h3 className="font-bold text-lg line-clamp-2 mb-1">{book.title}</h3>
 
-          {book.author_name && (
-            <p className="text-gray-700 text-sm">
-              <span className="font-medium text-emerald-700">Author:</span>{" "}
-              {book.author_name.join(", ")}
-            </p>
-          )}
+        <p className="text-sm text-muted-foreground line-clamp-1">
+          {book.author_name?.join(", ")}
+        </p>
 
-          {book.first_publish_year && (
-            <p className="text-gray-500 text-sm">
-              <span className="font-medium text-emerald-600">Year:</span>{" "}
-              {book.first_publish_year}
-            </p>
-          )}
-        </div>
+        {/* Footer */}
+        <div className="mt-auto flex items-center justify-between pt-3">
+          <ReadMoreButton onClick={handleOpen} />
 
-        <div className="flex items-center justify-between">
-          <ReadMoreButton onClick={handleReadMore} />
           <FavoriteButton
             favorite={isFavorite(book.key)}
             onClick={() => toggleFavorite(book.key)}

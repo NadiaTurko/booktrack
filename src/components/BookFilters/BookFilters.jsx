@@ -10,7 +10,7 @@ const BookFilters = ({ search, setSearch, sortOrder, setSortOrder }) => {
           placeholder="Search by title..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-400 shadow-sm"
+          className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-xl  focus:ring-emerald-400"
         />
         <Search className="absolute left-3 top-2.5 w-5 h-5 text-gray-400" />
       </div>
@@ -19,11 +19,10 @@ const BookFilters = ({ search, setSearch, sortOrder, setSortOrder }) => {
         <select
           value={sortOrder}
           onChange={(e) => setSortOrder(e.target.value)}
-          className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-400 shadow-sm bg-white"
+          className="w-full p-10 pr-4 py-2 border border-gray-300 rounded-xl  focus:ring-emerald-400 bg-white"
         >
           <option value="desc">Newest first</option>
           <option value="asc">Oldest first</option>
-          <option value="popular">Most popular</option>
         </select>
         <SortAsc className="absolute left-3 top-2.5 w-5 h-5 text-gray-400" />
       </div>

@@ -1,9 +1,24 @@
 import React from "react";
 
-const ReadMoreButton = ({ text = "📖 Read More", onClick }) => (
+const ReadMoreButton = ({ text = "View Details", onClick }) => (
   <button
     onClick={onClick}
-    className="w-5/6 py-2 px-4 rounded-lg text-sm font-medium bg-emerald-600 text-white shadow-sm hover:bg-emerald-700 hover:shadow-md transition-colors duration-300"
+    className="
+      w-full
+      py-2
+      px-4
+      rounded-md
+      text-sm
+      font-medium
+      bg-white/90
+      text-emerald-700
+      border
+      border-emerald-200
+      hover:bg-white
+      hover:text-emerald-800
+      transition
+      duration-200
+    "
   >
     {text}
   </button>
