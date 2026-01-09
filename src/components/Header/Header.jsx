@@ -1,8 +1,10 @@
-import LogoutButton from "../Buttons/LogoutButton";
-import FavoritesButton from "../Buttons/FavoritesButton";
 import { Link, useLocation } from "react-router-dom";
 
 import BookIcon from "../../assets/book.svg";
+
+import LogoutButton from "../Buttons/LogoutButton";
+import FavoritesButton from "../Buttons/FavoritesButton";
+import UserAvatar from "../UserAvatar/UserAvatar";
 
 const Header = ({ onLogout }) => {
   const location = useLocation();
@@ -10,12 +12,20 @@ const Header = ({ onLogout }) => {
 
   return (
     <header className="sticky top-0 z-50 w-full">
-      {/* Background layer */}
-      <div className="absolute inset-0 bg-gradient-to-r from-emerald-100 via-emerald-50 to-emerald-100 backdrop-blur-xl border-b border-emerald-200/60" />
+      <div
+        className="
+    absolute inset-0
+    bg-gradient-to-b
+    from-white/80
+    via-emerald-100
+    to-emerald-200
+    backdrop-blur-xl
+    border-b border-emerald-300/50
+  "
+      />
 
       <div className="relative container mx-auto px-4">
         <div className="flex items-center justify-between py-4">
-          {/* Logo */}
           <Link to="/" className="group flex items-center gap-2">
             <img
               src={BookIcon}
@@ -23,7 +33,7 @@ const Header = ({ onLogout }) => {
               className="
     w-8 h-8
     transition-transform duration-300
-    group-hover:rotate-6
+    group-hover:rotate-6 
     group-hover:scale-110
   "
             />
@@ -38,8 +48,7 @@ const Header = ({ onLogout }) => {
             </div>
           </Link>
 
-          {/* Actions */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-7">
             <FavoritesButton
               className={`rounded-xl px-4 py-2 text-sm font-semibold transition-all
                 ${
@@ -48,6 +57,8 @@ const Header = ({ onLogout }) => {
                     : "bg-white/80 text-gray-800 border border-gray-200 hover:bg-white shadow-sm"
                 }`}
             />
+
+            <UserAvatar size="md" />
 
             <LogoutButton
               onLogout={onLogout}

@@ -13,15 +13,32 @@ const LoginForm = ({ onSubmit, validate, loginError }) => {
       onSubmit={onSubmit}
     >
       {({ isSubmitting, errors, touched }) => (
-        <Form className="space-y-2">
+        <Form className="space-y-4">
           {/* Email */}
           <div>
-            <label className="block mb-1 font-medium">Email</label>
-            <Field
-              type="email"
-              name="email"
-              className="w-full p-2 border border-gray-300 rounded-lg"
-            />
+            <label className="block mb-1 text-sm font-medium text-gray-700">
+              Email
+            </label>
+
+            <div className="rounded-xl p-[1px] bg-gradient-to-b from-emerald-200 via-emerald-300 to-emerald-400">
+              <Field
+                type="email"
+                name="email"
+                placeholder="you@example.com"
+                className="
+                  w-full
+                  px-3 py-2
+                  rounded-[11px]
+                  bg-white/90
+                  backdrop-blur-sm
+                  text-gray-800
+                  outline-none
+                  transition-all duration-300
+                  focus:ring-2 focus:ring-emerald-400/60
+                "
+              />
+            </div>
+
             <div className="h-5 overflow-hidden">
               <div
                 className={`text-red-500 text-sm mt-1 transition-all duration-300 ${
@@ -37,12 +54,29 @@ const LoginForm = ({ onSubmit, validate, loginError }) => {
 
           {/* Password */}
           <div>
-            <label className="block mb-1 font-medium">Password</label>
-            <Field
-              type="password"
-              name="password"
-              className="w-full p-2 border border-gray-300 rounded-lg"
-            />
+            <label className="block mb-1 text-sm font-medium text-gray-700">
+              Password
+            </label>
+
+            <div className="rounded-xl p-[1px] bg-gradient-to-b from-emerald-200 via-emerald-300 to-emerald-400">
+              <Field
+                type="password"
+                name="password"
+                placeholder="••••••••"
+                className="
+                  w-full
+                  px-3 py-2
+                  rounded-[11px]
+                  bg-white/90
+                  backdrop-blur-sm
+                  text-gray-800
+                  outline-none
+                  transition-all duration-300
+                  focus:ring-2 focus:ring-emerald-400/60
+                "
+              />
+            </div>
+
             <div className="h-5 overflow-hidden">
               <div
                 className={`text-red-500 text-sm mt-1 transition-all duration-300 ${
@@ -69,12 +103,39 @@ const LoginForm = ({ onSubmit, validate, loginError }) => {
             </div>
           </div>
 
+          {/* Submit */}
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 rounded-lg transition-colors duration-300"
+            className="
+              w-full
+              rounded-xl
+              p-[1.5px]
+              bg-gradient-to-b
+              from-emerald-200
+              via-emerald-300
+              to-emerald-400
+              transition-transform duration-300
+              hover:scale-[1.02]
+              active:scale-95
+              disabled:opacity-60
+            "
           >
-            {isSubmitting ? "Logging in..." : "Login"}
+            <span
+              className="
+                block w-full
+                py-2
+                rounded-[11px]
+                font-semibold
+                text-emerald-900
+                bg-gradient-to-b
+                from-emerald-100
+                via-emerald-200
+                to-emerald-300
+              "
+            >
+              {isSubmitting ? "Logging in..." : "Login"}
+            </span>
           </button>
         </Form>
       )}

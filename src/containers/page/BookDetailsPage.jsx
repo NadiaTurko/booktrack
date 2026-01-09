@@ -11,10 +11,10 @@ const BookDetailsPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Fetch book data
   useEffect(() => {
     const fetchBook = async () => {
       try {
+        setError(null);
         setLoading(true);
 
         const res = await fetch(`https://openlibrary.org/${bookPath}.json`);
@@ -23,7 +23,6 @@ const BookDetailsPage = () => {
         const data = await res.json();
         setBook(data);
 
-        // Fetch authors (array of objects)
         if (data.authors && data.authors.length > 0) {
           const names = await Promise.all(
             data.authors.map(async (a) => {
@@ -31,10 +30,12 @@ const BookDetailsPage = () => {
                 `https://openlibrary.org${a.author.key}.json`
               );
               const authorData = await res.json();
-              return authorData.name;
+              return authorData?.name;
             })
           );
-          setAuthorNames(names);
+          setAuthorNames(names.filter(Boolean));
+        } else {
+          setAuthorNames([]);
         }
       } catch (err) {
         setError(err.message);
@@ -43,103 +44,204 @@ const BookDetailsPage = () => {
       }
     };
 
-    if (bookPath) {
-      fetchBook();
-    }
+    if (bookPath) fetchBook();
   }, [bookPath]);
 
   const getCoverUrl = (id) =>
     id ? `https://covers.openlibrary.org/b/id/${id}-L.jpg` : null;
 
+  const descriptionText = book?.description
+    ? typeof book.description === "string"
+      ? book.description
+      : book.description.value
+    : "";
+
   return (
     <>
       <Header onLogout={() => navigate("/")} />
 
-      <main className="container mx-auto px-4 py-10">
+      <main
+        className="
+          min-h-screen
+          px-6
+          py-10
+          bg-gradient-to-b
+          from-emerald-50
+          via-emerald-100
+          to-emerald-200
+        "
+      >
+        {/* Loading */}
         {loading && (
-          <p className="text-emerald-600 font-medium animate-pulse">
-            ⏳ Loading book details...
-          </p>
-        )}
-
-        {error && (
-          <div className="text-center text-red-600 font-bold">
-            ❗ Error: {error}
+          <div className="max-w-5xl mx-auto">
+            <p className="text-emerald-700 font-medium animate-pulse">
+              ⏳ Loading book details...
+            </p>
           </div>
         )}
 
-        {book && (
-          <div className="max-w-5xl mx-auto bg-white p-8 rounded-xs shadow-xl flex flex-col md:flex-row gap-10">
-            {/* Left side - Cover */}
-            <div className="inline-flex justify-center  rounded-xs ">
-              {book.covers && book.covers.length > 0 ? (
-                <img
-                  src={getCoverUrl(book.covers[0])}
-                  alt={book.title}
-                  className="max-h-[400px] w-auto rounded-xs p-1 border border-gray-300 shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-xl"
-                />
-              ) : (
-                <div className="w-72 h-96 bg-gray-200 rounded-xl flex items-center justify-center text-gray-500">
-                  No Cover Available
-                </div>
-              )}
+        {/* Error */}
+        {error && (
+          <div className="max-w-5xl mx-auto">
+            <div
+              className="
+                rounded-2xl
+                p-[1.5px]
+                bg-gradient-to-b
+                from-red-200
+                via-red-300
+                to-red-400
+              "
+            >
+              <div className="rounded-[14px] bg-white/90 backdrop-blur-xl p-4 text-center">
+                <p className="text-red-600 font-semibold">❗ Error: {error}</p>
+              </div>
             </div>
+          </div>
+        )}
 
-            {/* Right side - Book Info */}
-            <div className="flex-1">
-              <h1 className="text-4xl font-extrabold text-emerald-800 mb-4 leading-tight">
-                {book.title || "Untitled"}
-              </h1>
+        {/* Content */}
+        {book && (
+          <div className="max-w-5xl mx-auto">
+            {/* Gradient border wrapper (same system as BookCard) */}
+            <div
+              className="
+                rounded-3xl
+                p-[1.5px]
+                bg-gradient-to-b
+                from-emerald-200
+                via-emerald-300
+                to-emerald-400
+                shadow-2xl
+              "
+            >
+              {/* Glass card */}
+              <div
+                className="
+                  rounded-[22px]
+                  bg-white/90
+                  backdrop-blur-xl
+                  p-6 md:p-8
+                "
+              >
+                <div className="flex flex-col md:flex-row gap-10">
+                  {/* Left - Cover */}
+                  <div className="w-full md:w-[340px] flex justify-center">
+                    <div
+                      className="
+                        w-full
+                        rounded-2xl
+                        p-[1.5px]
+                    
+                      "
+                    >
+                      <div
+                        className="
+                          rounded-[14px]
+                          bg-white/80
+                          backdrop-blur-sm
+                          px-6
+                          py-6
+                          flex items-center justify-center
+                        "
+                      >
+                        {book.covers && book.covers.length > 0 ? (
+                          <img
+                            src={getCoverUrl(book.covers[0])}
+                            alt={book.title || "Book cover"}
+                            className="
+                              h-[360px]
+                              w-auto
+                              max-w-full
+                              object-contain
+                              rounded-md
+                              drop-shadow-md
+                              transition-transform duration-300
+                              hover:scale-[1.03]
+                            "
+                          />
+                        ) : (
+                          <div className="w-full h-[360px] rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-700/70 font-medium">
+                            No Cover Available
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
 
-              {authorNames.length > 0 && (
-                <p className="text-md mb-2 text-gray-700">
-                  <span className="font-semibold text-emerald-600">
-                    Author(s):
-                  </span>{" "}
-                  {authorNames.join(", ")}
-                </p>
-              )}
+                  {/* Right - Info */}
+                  <div className="flex-1">
+                    <h1 className="text-3xl md:text-4xl font-extrabold text-emerald-800 mb-4 leading-tight">
+                      {book.title || "Untitled"}
+                    </h1>
 
-              {book.languages && (
-                <p className="text-md mb-2 text-gray-700">
-                  <span className="font-semibold text-emerald-600">
-                    Language:
-                  </span>{" "}
-                  {book.languages
-                    .map((lang) =>
-                      lang.key.replace("/languages/", "").toUpperCase()
-                    )
-                    .join(", ")}
-                </p>
-              )}
+                    <div className="space-y-2">
+                      {authorNames.length > 0 && (
+                        <p className="text-gray-700">
+                          <span className="font-semibold text-emerald-700">
+                            Author(s):
+                          </span>{" "}
+                          {authorNames.join(", ")}
+                        </p>
+                      )}
 
-              {book.first_publish_date && (
-                <p className="text-md mb-2 text-gray-700">
-                  <span className="font-semibold text-emerald-600">
-                    Published:
-                  </span>{" "}
-                  {book.first_publish_date}
-                </p>
-              )}
+                      {book.languages && (
+                        <p className="text-gray-700">
+                          <span className="font-semibold text-emerald-700">
+                            Language:
+                          </span>{" "}
+                          {book.languages
+                            .map((lang) =>
+                              lang.key.replace("/languages/", "").toUpperCase()
+                            )
+                            .join(", ")}
+                        </p>
+                      )}
 
-              {/* Description */}
-              {book.description && (
-                <div className="mt-6">
-                  <h2 className="text-lg font-semibold mb-2 text-emerald-700">
-                    Description
-                  </h2>
-                  <p className="text-gray-800 leading-relaxed">
-                    {typeof book.description === "string"
-                      ? book.description
-                      : book.description.value}
-                  </p>
+                      {book.first_publish_date && (
+                        <p className="text-gray-700">
+                          <span className="font-semibold text-emerald-700">
+                            Published:
+                          </span>{" "}
+                          {book.first_publish_date}
+                        </p>
+                      )}
+                    </div>
+
+                    {/* Description */}
+                    {descriptionText && (
+                      <div className="mt-6">
+                        <div
+                          className="
+                            rounded-2xl
+                            p-[1px]
+                            bg-gradient-to-b
+                            from-emerald-200
+                            via-emerald-300
+                            to-emerald-400
+                          "
+                        >
+                          <div className="rounded-[14px] bg-white/85 backdrop-blur-sm p-4">
+                            <h2 className="text-lg font-semibold mb-2 text-emerald-800">
+                              Description
+                            </h2>
+                            <p className="text-gray-800 leading-relaxed">
+                              {descriptionText}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    <div className="mt-8 max-w-xs">
+                      <ReadMoreButton
+                        onClick={() => navigate(-1)}
+                        text="← Back to list"
+                      />
+                    </div>
+                  </div>
                 </div>
-              )}
-
-              <ReadMoreButton
-                onClick={() => navigate(-1)}
-                text=" ← Back to list"
-              />
+              </div>
             </div>
           </div>
         )}

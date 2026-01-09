@@ -7,21 +7,49 @@ const ShowMoreButton = ({ onClick, disabled, text = "Show More" }) => {
       disabled={disabled}
       className={`
         w-1/5
-        px-6 py-3
-        font-semibold
         rounded-2xl
-        shadow-lg
-        text-white
+        p-[1.5px]             
         transition-all duration-300
-        transform
         ${
           disabled
-            ? "bg-emerald-500 opacity-70 cursor-not-allowed shadow-inner"
-            : "bg-linear-to-r from-emerald-600 via-teal-500 to-emerald-400 hover:scale-105 hover:brightness-110 hover:shadow-2xl"
+            ? "opacity-60 cursor-not-allowed"
+            : `
+              bg-gradient-to-b
+              from-emerald-200
+              via-emerald-300
+              to-emerald-400
+              hover:-translate-y-0.5
+              active:scale-95
+            `
         }
       `}
     >
-      {text}
+      {/* Inner button */}
+      <span
+        className={`
+          block w-full
+          px-6 py-3
+          rounded-[14px]
+          font-semibold
+          text-emerald-900
+          shadow-md
+          transition-all duration-300
+          ${
+            disabled
+              ? "bg-emerald-200 shadow-inner"
+              : `
+                bg-gradient-to-b
+                from-emerald-100
+                via-emerald-200
+                to-emerald-300
+                hover:brightness-105
+                hover:shadow-lg
+              `
+          }
+        `}
+      >
+        {text}
+      </span>
     </button>
   );
 };

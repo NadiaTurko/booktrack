@@ -11,7 +11,7 @@ const BooksList = ({
   canLoadMore = false,
 }) => {
   return (
-    <div className="mt-10 w-full flex flex-col justify-between items-center container mx-auto px-4">
+    <div className="mt-10 w-full flex flex-col justify-between items-center container mx-auto ">
       {error && (
         <p className="text-red-600 text-lg font-medium mb-4">
           ❌ Error: {error}
@@ -28,8 +28,8 @@ const BooksList = ({
         gap-12 justify-items-center w-full
         "
       >
-        {items.map((book, index) => (
-          <BookCard key={index} book={book} />
+        {items.map((book) => (
+          <BookCard key={book.key} book={book} />
         ))}
 
         {isLoading &&

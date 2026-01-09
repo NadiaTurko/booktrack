@@ -1,23 +1,28 @@
-const STORAGE_KEY = "favoriteBooks";
+const KEY = "favorites";
 
 export const getFavorites = () => {
   try {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    return stored ? JSON.parse(stored) : [];
+    const raw = JSON.parse(localStorage.getItem(KEY));
+    return Array.isArray(raw) ? raw : [];
   } catch {
     return [];
   }
 };
 
 export const toggleFavorite = (bookId) => {
-  const favorites = getFavorites();
+  const current = getFavorites();
 
-  const exists = favorites.find((fav) => fav.id === bookId);
+  const ids = current
+    .map((fav) => (typeof fav === "string" ? fav : fav?.id))
+    .filter(Boolean);
 
-  const updated = exists
-    ? favorites.filter((fav) => fav.id !== bookId)
-    : [...favorites, { id: bookId, added: Date.now() }];
+  const set = new Set(ids);
 
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
+  if (set.has(bookId)) set.delete(bookId);
+  else set.add(bookId);
+
+  const updated = Array.from(set);
+
+  localStorage.setItem(KEY, JSON.stringify(updated));
   return updated;
 };
