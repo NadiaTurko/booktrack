@@ -3,7 +3,7 @@ import { Search, SortAsc } from "lucide-react";
 
 const BookFilters = ({ search, setSearch, sortOrder, setSortOrder }) => {
   return (
-    <div className="flex flex-col sm:flex-row gap-4 mb-6">
+    <div className="flex flex-col sm:flex-row justify-between gap-4 mb-6 ">
       <div className="relative w-full sm:w-1/2">
         <div
           className="

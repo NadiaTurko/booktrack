@@ -3,9 +3,12 @@ const LogoutButton = ({ onLogout }) => {
     <button
       onClick={onLogout}
       className="
-        px-5 py-1.5
+        px-3 py-1
+        text-sm
+        sm:px-4 sm:py-1.5 sm:text-base
+        md:px-5 md:text-lg
         rounded-xl
-        text-lg font-medium
+        font-medium
         text-emerald-700
         bg-white/60
         backdrop-blur-md

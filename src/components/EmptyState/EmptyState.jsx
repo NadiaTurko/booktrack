@@ -1,10 +1,9 @@
 import React from "react";
 import BookIcon from "../../assets/book.svg";
 
-const EmptyState = ({ title, message, icon }) => {
+const EmptyState = ({ title, message }) => {
   return (
     <div className="w-full flex justify-center py-20">
-      {/* Gradient border */}
       <div
         className="
           max-w-md w-full
@@ -16,7 +15,6 @@ const EmptyState = ({ title, message, icon }) => {
           to-emerald-400
         "
       >
-        {/* Glass card */}
         <div
           className="
             rounded-[22px]
@@ -27,7 +25,6 @@ const EmptyState = ({ title, message, icon }) => {
             shadow-lg
           "
         >
-          {/* Icon */}
           <div className="flex justify-center mb-4">
             <img
               src={BookIcon}

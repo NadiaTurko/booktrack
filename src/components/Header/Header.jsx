@@ -26,7 +26,7 @@ const Header = ({ onLogout }) => {
 
       <div className="relative container mx-auto px-4">
         <div className="flex items-center justify-between py-4">
-          <Link to="/" className="group flex items-center gap-2">
+          <Link to="/" className="group flex items-center gap-0.5 sm:gap-2">
             <img
               src={BookIcon}
               alt="BookTrack logo"
@@ -48,7 +48,7 @@ const Header = ({ onLogout }) => {
             </div>
           </Link>
 
-          <div className="flex items-center gap-7">
+          <div className="flex items-center gap-2 md:gap-7">
             <FavoritesButton
               className={`rounded-xl px-4 py-2 text-sm font-semibold transition-all
                 ${

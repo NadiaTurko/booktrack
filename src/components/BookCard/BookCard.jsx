@@ -32,7 +32,6 @@ const BookCard = ({ book }) => {
         hover:shadow-2xl
       "
     >
-      {/* Inner card */}
       <div
         className="
           h-full w-full
@@ -43,7 +42,6 @@ const BookCard = ({ book }) => {
           group-hover:-translate-y-1
         "
       >
-        {/* ✅ Cover wrapper (same size for all books) */}
         <div
           className="
             h-[260px]
@@ -66,7 +64,6 @@ const BookCard = ({ book }) => {
           />
         </div>
 
-        {/* Content */}
         <div className="p-4 flex flex-col h-[160px]">
           <h3 className="font-bold text-lg line-clamp-2 mb-1 text-gray-900">
             {book.title}

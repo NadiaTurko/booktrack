@@ -15,9 +15,9 @@ const UserAvatar = ({ size = "md", className = "" }) => {
   const user = useAuthUser();
 
   const sizes = {
-    sm: "w-8 h-8 text-sm",
-    md: "w-9 h-9 text-base",
-    lg: "w-11 h-11 text-lg",
+    sm: "w-7 h-7 text-xs sm:w-8 sm:h-8 sm:text-sm",
+    md: "w-8 h-8 text-sm sm:w-9 sm:h-9 sm:text-base",
+    lg: "w-10 h-10 text-base sm:w-11 sm:h-11 sm:text-lg",
   };
 
   if (!user) return null;
