@@ -4,9 +4,12 @@ import { useFavorites } from "../../context/FavoritesContext";
 
 import ReadMoreButton from "../Buttons/ReadMoreButton";
 import FavoriteButton from "../Buttons/FavoriteButton";
+import ReadStatusToggle from "../Buttons/ReadStatusToggle";
 
-const BookCard = ({ book }) => {
-  const { toggleFavorite, isFavorite } = useFavorites();
+const BookCard = ({ book, showReadStatus = false }) => {
+  const { isFavorite, getFavorite, setFavoriteStatus, toggleFavorite } =
+    useFavorites();
+  const fav = getFavorite(book.key);
   const navigate = useNavigate();
 
   const coverUrl = book.cover_i
@@ -64,14 +67,41 @@ const BookCard = ({ book }) => {
           />
         </div>
 
-        <div className="p-4 flex flex-col h-[160px]">
-          <h3 className="font-bold text-lg line-clamp-2 mb-1 text-gray-900">
+        <div className="p-3 flex flex-col h-[160px]">
+          <h3
+            className="text-[17px] sm:text-[18px]
+      font-extrabold
+      leading-tight
+      tracking-tight
+      text-slate-900
+      line-clamp-2"
+          >
             {book.title}
           </h3>
 
-          <p className="text-sm text-gray-500 line-clamp-1">
+          <p
+            className=" mt-1
+      text-[13px] sm:text-sm
+      font-medium
+      text-slate-500
+      leading-snug
+      line-clamp-1"
+          >
             {book.author_name?.join(", ")}
           </p>
+
+          {showReadStatus && isFavorite(book.key) && (
+            <ReadStatusToggle
+              value={fav?.status || "unread"}
+              onToggle={() =>
+                setFavoriteStatus(
+                  book.key,
+                  fav?.status === "read" ? "unread" : "read"
+                )
+              }
+              className="mt-2 w-fit"
+            />
+          )}
 
           <div className="mt-auto flex items-center justify-between pt-3 gap-5">
             <ReadMoreButton onClick={handleOpen} />

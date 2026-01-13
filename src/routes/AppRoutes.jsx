@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 
 import LoginPage from "../containers/page/LoginPage";
 import BooksPage from "../containers/page/BooksPage";
@@ -8,8 +8,20 @@ import BookDetailsPage from "../containers/page/bookDetailsPage";
 import SignupPage from "../containers/page/SignupPage";
 
 import ProtectedRoute from "./ProtectedRoute";
+import { logoutUser } from "../services/auth"; // ✅ перевір шлях
 
 const AppRoutes = () => {
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      await logoutUser();
+      navigate("/login");
+    } catch (e) {
+      console.error("Logout failed:", e);
+    }
+  };
+
   return (
     <Routes>
       <Route path="/login" element={<LoginPage />} />
@@ -19,7 +31,7 @@ const AppRoutes = () => {
         path="/"
         element={
           <ProtectedRoute>
-            <BooksPage />
+            <BooksPage onLogout={handleLogout} />
           </ProtectedRoute>
         }
       />
@@ -28,7 +40,7 @@ const AppRoutes = () => {
         path="/favorites"
         element={
           <ProtectedRoute>
-            <FavoritesPage />
+            <FavoritesPage onLogout={handleLogout} />
           </ProtectedRoute>
         }
       />
@@ -37,7 +49,7 @@ const AppRoutes = () => {
         path="/books/*"
         element={
           <ProtectedRoute>
-            <BookDetailsPage />
+            <BookDetailsPage onLogout={handleLogout} />
           </ProtectedRoute>
         }
       />

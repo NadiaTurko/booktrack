@@ -9,6 +9,7 @@ const BooksList = ({
   isLoading = false,
   onLoadMore = null,
   canLoadMore = false,
+  showReadStatus = false,
 }) => {
   return (
     <div className="mt-10 w-full flex flex-col justify-between items-center container mx-auto ">
@@ -29,7 +30,11 @@ const BooksList = ({
         "
       >
         {items.map((book) => (
-          <BookCard key={book.key} book={book} />
+          <BookCard
+            key={book.key}
+            book={book}
+            showReadStatus={showReadStatus}
+          />
         ))}
 
         {isLoading &&

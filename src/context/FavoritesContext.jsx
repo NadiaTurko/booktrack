@@ -1,47 +1,70 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { useAuthUser } from "../hooks/useAuthUser";
 import {
   getFavorites,
   toggleFavorite as toggleFavInStorage,
+  setFavoriteStatus as setStatusInStorage,
 } from "../utils/favorite";
 
 const FavoritesContext = createContext(null);
 
-const normalizeFavorites = (raw) => {
-  if (!Array.isArray(raw)) return [];
-  const ids = raw
-    .map((fav) => (typeof fav === "string" ? fav : fav?.id))
-    .filter(Boolean);
-
-  return Array.from(new Set(ids));
-};
-
 export const FavoritesProvider = ({ children }) => {
-  const [favorites, setFavorites] = useState(() =>
-    normalizeFavorites(getFavorites())
-  );
+  const user = useAuthUser();
+  const uid = user?.uid;
+
+  const [favorites, setFavorites] = useState([]);
 
   useEffect(() => {
+    setFavorites(getFavorites(uid));
+  }, [uid]);
+
+  useEffect(() => {
+    const storageKey = `favorites:${uid || "guest"}`;
+
+    const sync = () => setFavorites(getFavorites(uid));
+
     const onStorage = (e) => {
       if (e.storageArea !== localStorage) return;
-      if (e.key !== "favorites") return;
-
-      setFavorites(normalizeFavorites(getFavorites()));
+      if (e.key !== storageKey) return;
+      sync();
     };
 
     window.addEventListener("storage", onStorage);
-    return () => window.removeEventListener("storage", onStorage);
-  }, []);
+    window.addEventListener("favorites:changed", sync);
+
+    return () => {
+      window.removeEventListener("storage", onStorage);
+      window.removeEventListener("favorites:changed", sync);
+    };
+  }, [uid]);
 
   const toggleFavorite = (bookId) => {
-    const updated = toggleFavInStorage(bookId);
-    setFavorites(normalizeFavorites(updated));
+    const updated = toggleFavInStorage(uid, bookId);
+    setFavorites(updated);
   };
 
-  const isFavorite = (bookId) => favorites.includes(bookId);
+  const setFavoriteStatus = (bookId, status) => {
+    const updated = setStatusInStorage(uid, bookId, status);
+    setFavorites(updated);
+  };
+
+  const isFavorite = (bookId) => favorites.some((f) => f.id === bookId);
+
+  const getFavorite = (bookId) =>
+    favorites.find((f) => f.id === bookId) || null;
+
+  const favoriteIds = useMemo(() => favorites.map((f) => f.id), [favorites]);
 
   const value = useMemo(
-    () => ({ favorites, toggleFavorite, isFavorite }),
-    [favorites]
+    () => ({
+      favorites,
+      favoriteIds,
+      toggleFavorite,
+      setFavoriteStatus,
+      isFavorite,
+      getFavorite,
+    }),
+    [favorites, favoriteIds]
   );
 
   return (

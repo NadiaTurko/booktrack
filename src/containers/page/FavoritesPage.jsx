@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-
 import Header from "../../components/Header/Header";
-import BookCard from "../../components/BookCard/BookCard";
 import BookFilters from "../../components/BookFilters/BookFilters";
 import EmptyState from "../../components/EmptyState/EmptyState";
 import BooksList from "../../components/BooksList/BooksList";
@@ -14,28 +12,29 @@ import useDebouncedValue from "../../hooks/useDebouncedValue";
 
 const FavoritesPage = ({ onLogout }) => {
   const { books } = useBooks();
-  const { favorites } = useFavorites();
+  const { favorites, favoriteIds } = useFavorites();
 
   const [search, setSearch] = useState("");
-  const [sortOrder, setSortOrder] = useState("asc");
+  const [sortOrder, setSortOrder] = useState("unread_first");
+  const [statusFilter, setStatusFilter] = useState("all");
   const [visibleCount, setVisibleCount] = useState(8);
 
   const debouncedSearch = useDebouncedValue(search, 300);
 
   const favoriteBooks = useFilteredSortedBooks({
     books,
-    favorites,
+    favorites: favoriteIds,
+    favoritesMeta: favorites,
     search: debouncedSearch,
     sortOrder,
     onlyFavorites: true,
+    statusFilter,
   });
 
   const favoriteBooksLimited = favoriteBooks.slice(0, visibleCount);
   const canLoadMore = favoriteBooks.length > visibleCount;
 
-  const handleLoadMore = () => {
-    setVisibleCount((prev) => prev + 8);
-  };
+  const handleLoadMore = () => setVisibleCount((prev) => prev + 8);
 
   return (
     <>
@@ -48,12 +47,14 @@ const FavoritesPage = ({ onLogout }) => {
             setSearch={setSearch}
             sortOrder={sortOrder}
             setSortOrder={setSortOrder}
+            statusFilter={statusFilter}
+            setStatusFilter={setStatusFilter}
+            showStatusFilter={true}
           />
         )}
 
         {favorites.length === 0 && (
           <EmptyState
-            icon="📚"
             title="No favorite books yet"
             message="Add books to favorites to see them here."
           />
@@ -70,12 +71,12 @@ const FavoritesPage = ({ onLogout }) => {
         {favoriteBooks.length > 0 && (
           <BooksList
             items={favoriteBooksLimited}
-            status="succeeded" // фіксований, бо ми не робимо fetch
-            error={null}
+            status="succeeded"
             hideEmpty={true}
             isLoading={false}
             onLoadMore={handleLoadMore}
             canLoadMore={canLoadMore}
+            showReadStatus={true}
           />
         )}
       </main>

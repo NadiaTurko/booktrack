@@ -1,28 +1,58 @@
-const KEY = "favorites";
+const keyFor = (uid) => `favorites:${uid || "guest"}`;
 
-export const getFavorites = () => {
+// щоб оновлювалось в цій же вкладці (storage не тригериться в тому ж табі)
+const notify = () => window.dispatchEvent(new Event("favorites:changed"));
+
+export const getFavorites = (uid) => {
   try {
-    const raw = JSON.parse(localStorage.getItem(KEY));
+    const raw = JSON.parse(localStorage.getItem(keyFor(uid)));
     return Array.isArray(raw) ? raw : [];
   } catch {
     return [];
   }
 };
 
-export const toggleFavorite = (bookId) => {
-  const current = getFavorites();
+const saveFavorites = (uid, favorites) => {
+  localStorage.setItem(keyFor(uid), JSON.stringify(favorites));
+  notify();
+};
 
-  const ids = current
-    .map((fav) => (typeof fav === "string" ? fav : fav?.id))
-    .filter(Boolean);
+export const toggleFavorite = (uid, bookId) => {
+  const current = getFavorites(uid);
 
-  const set = new Set(ids);
+  const exists = current.some((f) => f?.id === bookId);
 
-  if (set.has(bookId)) set.delete(bookId);
-  else set.add(bookId);
+  let updated;
+  if (exists) {
+    updated = current.filter((f) => f.id !== bookId);
+  } else {
+    updated = [
+      ...current,
+      {
+        id: bookId,
+        status: "unread", // default
+        addedAt: Date.now(),
+      },
+    ];
+  }
 
-  const updated = Array.from(set);
+  // на всяк випадок прибираємо дублікати по id
+  const uniq = new Map(updated.map((f) => [f.id, f]));
+  const normalized = Array.from(uniq.values());
 
-  localStorage.setItem(KEY, JSON.stringify(updated));
+  saveFavorites(uid, normalized);
+  return normalized;
+};
+
+export const setFavoriteStatus = (uid, bookId, status) => {
+  const current = getFavorites(uid);
+
+  const normalizedStatus = status === "read" ? "read" : "unread";
+
+  const updated = current.map((f) =>
+    f.id === bookId ? { ...f, status: normalizedStatus } : f
+  );
+
+  saveFavorites(uid, updated);
   return updated;
 };
