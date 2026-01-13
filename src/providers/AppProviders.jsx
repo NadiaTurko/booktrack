@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import { AuthProvider } from "../context/AuthContext";
 import { BooksProvider } from "../context/BooksContext";
 import { FavoritesProvider } from "../context/FavoritesContext";
@@ -19,11 +19,11 @@ const ProvidersWithUser = ({ children }) => {
 
 const AppProviders = ({ children }) => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <AuthProvider>
         <ProvidersWithUser>{children}</ProvidersWithUser>
       </AuthProvider>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
