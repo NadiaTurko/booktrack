@@ -27,7 +27,7 @@ const BookCard = ({ book, showReadStatus = false }) => {
         w-full h-[420px]
         rounded-2xl
         p-[1.5px]
-        bg-gradient-to-b
+        bg-linear-to-b
         from-emerald-200
         via-emerald-300
         to-emerald-400

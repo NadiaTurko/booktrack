@@ -103,7 +103,7 @@ const BookDetailsPage = () => {
 
                     {descriptionText && (
                       <div className="mt-6">
-                        <div className="rounded-2xl p-[1px] bg-gradient-to-b from-emerald-200 via-emerald-300 to-emerald-400">
+                        <div className="rounded-2xl p-[1px] bg-linear-to-b from-emerald-200 via-emerald-300 to-emerald-400">
                           <div className="rounded-[14px] bg-white/85 backdrop-blur-sm p-4">
                             <h2 className="text-lg font-semibold mb-2 text-emerald-800">
                               Description

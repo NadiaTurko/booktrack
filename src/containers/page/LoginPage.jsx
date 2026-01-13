@@ -49,7 +49,7 @@ const LoginPage = () => {
           w-full max-w-sm
           p-[1.5px]
           rounded-3xl
-          bg-gradient-to-b
+          bg-linear-to-b
           from-emerald-200
           via-emerald-300
           to-emerald-400
@@ -81,7 +81,7 @@ const LoginPage = () => {
               mt-4 w-full
               rounded-xl
               p-[1px]
-              bg-gradient-to-b
+              bg-linear-to-b
               from-emerald-200
               via-emerald-300
               to-emerald-400
