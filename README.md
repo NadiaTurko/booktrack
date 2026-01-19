@@ -31,9 +31,16 @@ The app enables users to search for books, save favorites, track reading status 
 </p>
 <p align="center">
   <img src="src/assets/screenshots/home.png" width="45%" alt="Home page" />
+  <img src="src/assets/screenshots/favorites.png" width="45%" alt="Favorites page" />
 </p>
 
 
+
+
+## 🖼 Screenshots
+<p align="center">
+  <img src="src/assets/screenshots/book.png" width="45%" alt="Login page" />
+</p>
 
 ---
 
