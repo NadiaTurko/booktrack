@@ -6,6 +6,11 @@
 
 🌐 **Live demo:**  
 👉 https://nadiaturko.github.io/booktrack/
+---
+
+<p align="center">
+  <img src="src/assets/screenshots/home.png" width="70%" alt="Home page" />
+</p>
 
 [![React](https://img.shields.io/badge/React-18+-61dafb?logo=react&logoColor=white)](https://react.dev/)
 [![Vite](https://img.shields.io/badge/Vite-5+-646cff?logo=vite&logoColor=white)](https://vite.dev/)
@@ -23,13 +28,7 @@
 
 The app enables users to search for books, save favorites, track reading status (*read / unread*), and filter content efficiently, making reading planning simple and structured.
 
----
 
-## 🖼 Screenshots
-
-<p align="center">
-  <img src="src/assets/screenshots/home.png" width="22%" alt="Home page" />
-</p>
 
 
 ---
