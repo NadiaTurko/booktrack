@@ -1,22 +1,30 @@
 <div align="center">
 
-# 📚 BookTrack  
-
-### A user-focused web application for tracking and organizing personal reading lists
+# 📚 BookTrack
+### Track • Save • Discover — your personal reading list manager
 
 🌐 **Live demo:**  
 👉 https://nadiaturko.github.io/booktrack/
----
 
 <p align="center">
-  <img src="src/assets/screenshots/home.png" width="70%" alt="Home page" />
+  <img src="src/assets/screenshots/home.png" width="78%" alt="BookTrack home page preview" />
 </p>
 
-[![React](https://img.shields.io/badge/React-18+-61dafb?logo=react&logoColor=white)](https://react.dev/)
-[![Vite](https://img.shields.io/badge/Vite-5+-646cff?logo=vite&logoColor=white)](https://vite.dev/)
-[![Firebase](https://img.shields.io/badge/Firebase-Auth-ffca28?logo=firebase&logoColor=black)](https://firebase.google.com/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3+-38bdf8?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
-[![License](https://img.shields.io/badge/License-MIT-green)]()
+<p>
+  <a href="https://react.dev/">
+    <img src="https://img.shields.io/badge/React-18+-61dafb?logo=react&logoColor=white" />
+  </a>
+  <a href="https://vite.dev/">
+    <img src="https://img.shields.io/badge/Vite-5+-646cff?logo=vite&logoColor=white" />
+  </a>
+  <a href="https://firebase.google.com/">
+    <img src="https://img.shields.io/badge/Firebase-Auth-ffca28?logo=firebase&logoColor=black" />
+  </a>
+  <a href="https://tailwindcss.com/">
+    <img src="https://img.shields.io/badge/Tailwind_CSS-3+-38bdf8?logo=tailwindcss&logoColor=white" />
+  </a>
+  <img src="https://img.shields.io/badge/License-MIT-green" />
+</p>
 
 </div>
 
@@ -24,12 +32,9 @@
 
 ## ✨ About the Project
 
-**BookTrack** is a user-focused book tracking application designed for readers who want to organize, track, and manage their personal reading lists.
+**BookTrack** is a user-focused web application designed for readers who want to organize, track, and manage their personal reading lists.
 
-The app enables users to search for books, save favorites, track reading status (*read / unread*), and filter content efficiently, making reading planning simple and structured.
-
-
-
+The app allows users to search for books, save favorites, track reading status (*read / unread*), and filter content efficiently, making reading planning simple and structured.
 
 ---
 
