@@ -1,72 +1,129 @@
 <div align="center">
 
-# 📚 BookTrack
-### Track • Save • Discover — your personal reading list manager
+# BookTrack
 
-🌐 **Live demo:**  
-👉 https://nadiaturko.github.io/booktrack/
+**Your private reading library** — browse books, keep shelves tidy, and jot down notes as you read.
 
-<p align="center">
-  <img src="src/assets/screenshots/home.png" width="78%" alt="BookTrack home page preview" />
-</p>
+[![Live Demo](https://img.shields.io/badge/demo-GitHub%20Pages-222?style=flat-square)](https://nadiaturko.github.io/booktrack/)
+[![React](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react&logoColor=white)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Vite](https://img.shields.io/badge/Vite-7-646CFF?style=flat-square&logo=vite&logoColor=white)](https://vite.dev/)
+[![Firebase](https://img.shields.io/badge/Firebase-Auth-FFCA28?style=flat-square&logo=firebase&logoColor=black)](https://firebase.google.com/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-38BDF8?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
 
-<p>
-  <a href="https://react.dev/">
-    <img src="https://img.shields.io/badge/React-18+-61dafb?logo=react&logoColor=white" />
-  </a>
-  <a href="https://vite.dev/">
-    <img src="https://img.shields.io/badge/Vite-5+-646cff?logo=vite&logoColor=white" />
-  </a>
-  <a href="https://firebase.google.com/">
-    <img src="https://img.shields.io/badge/Firebase-Auth-ffca28?logo=firebase&logoColor=black" />
-  </a>
-  <a href="https://tailwindcss.com/">
-    <img src="https://img.shields.io/badge/Tailwind_CSS-3+-38bdf8?logo=tailwindcss&logoColor=white" />
-  </a>
-  <img src="https://img.shields.io/badge/License-MIT-green" />
-</p>
+[Live demo](https://nadiaturko.github.io/booktrack/) · [Report bug](https://github.com/NadiaTurko/booktrack/issues) · [Request feature](https://github.com/NadiaTurko/booktrack/issues)
+
+<br />
+
+<img src="src/assets/screenshots/home.png" alt="BookTrack library overview" width="900" />
 
 </div>
 
 ---
 
-## ✨ About the Project
+## About
 
-**BookTrack** is a user-focused web application designed for readers who want to organize, track, and manage their personal reading lists.
+BookTrack is a React web app for organizing a personal reading list. Search books from [Open Library](https://openlibrary.org/), save favorites, track **To Read** / **Finished** shelves, switch between view modes, and keep reading notes & quotes on each book’s details page.
 
-The app allows users to search for books, save favorites, track reading status (*read / unread*), and filter content efficiently, making reading planning simple and structured.
-
----
-
-## 🚀 Features
-
-- 🔍 Search books via external API  
-- ❤️ Add and remove books from favorites  
-- ✅ Track reading status (*Read / Unread*)  
-- 📂 Filter and sort favorite books  
-- 👤 User authentication with Firebase  
-- 🔐 Protected routes for authorized users  
-- 💾 Persistent data storage  
-- 📱 Fully responsive UI  
+Data for shelves and journal entries is stored per user in `localStorage`; authentication is handled by Firebase.
 
 ---
 
-## 🧰 Tech Stack
+## Features
 
-- **React 18+** — UI development  
-- **React Router** — client-side routing  
-- **Firebase Authentication** — user authentication  
-- **Formik** — form handling and validation  
-- **Tailwind CSS** — styling  
-- **Vite** — fast build tool  
-- **ESLint** — code quality  
-- **Custom React Hooks & Context API** — state and logic management  
+- Browse and search books via the Open Library API
+- Favorites with **To Read** and **Finished** shelf status
+- Multiple view modes: Books, Cards, Library, List
+- Sort & filter on the library and favorites pages
+- Book details with description, shelf controls, and a reading journal (notes, quotes, place)
+- Firebase email/password auth with protected routes
+- Responsive cozy “reading library” UI (cream / burgundy)
 
 ---
 
-## ⚙️ Getting Started
+## Screenshots
 
-### 1️⃣ Clone the repository
+<p align="center">
+  <img src="src/assets/screenshots/home.png" alt="Library home with shelves, filters, and book cards" width="48%" />
+  &nbsp;
+  <img src="src/assets/screenshots/login.png" alt="Login screen" width="48%" />
+</p>
+
+---
+
+## Tech stack
+
+| Layer | Tools |
+| --- | --- |
+| UI | React 19, TypeScript, React Router 7 |
+| Styling | Tailwind CSS 4, Lucide icons |
+| Auth | Firebase Authentication |
+| Forms | Formik + Yup |
+| Data | Open Library API, localStorage repositories |
+| Architecture | Context API, shared hooks, repository interfaces |
+| Tooling | Vite 7, ESLint, React Compiler, gh-pages |
+
+---
+
+## Getting started
+
+### Prerequisites
+
+- Node.js 20+ (recommended)
+- npm 10+
+
+### Install & run
+
 ```bash
 git clone https://github.com/NadiaTurko/booktrack.git
 cd booktrack
+npm install
+npm run dev
+```
+
+Open the local URL printed by Vite (base path: `/booktrack/`).
+
+### Demo account
+
+On the login screen you can use **Sign in as demo user**, or:
+
+| Field | Value |
+| --- | --- |
+| Email | `demo@demo.com` |
+| Password | `demo1234` |
+
+> The demo user must exist in the Firebase Auth project linked to this app.
+
+### Scripts
+
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start Vite dev server |
+| `npm run build` | Typecheck + production build |
+| `npm run typecheck` | `tsc --noEmit` |
+| `npm run preview` | Preview the production build |
+| `npm run lint` | Run ESLint |
+| `npm run deploy` | Build and publish to GitHub Pages |
+
+---
+
+## Project structure
+
+```text
+src/
+  components/     # Presentational UI (BookCard views, filters, layout)
+  containers/     # Page orchestrators
+  context/        # Auth, books, favorites, journal providers
+  domain/         # Repository interfaces (DIP)
+  hooks/          # Shared library & auth hooks
+  repositories/   # localStorage implementations
+  routes/         # App routes & protected route
+  services/       # Firebase auth helpers
+  types/          # Shared TypeScript types
+```
+
+---
+
+## License
+
+This project is available under the [ISC](https://opensource.org/licenses/ISC) license.

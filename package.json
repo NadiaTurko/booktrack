@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "tsc --noEmit && vite build",
+    "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
@@ -39,11 +40,19 @@
     "globals": "^16.4.0",
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.16",
+    "typescript": "^7.0.2",
     "vite": "^7.1.7"
   },
-  "description": "<div align=\"center\">",
+  "description": "Personal reading library — browse books, shelves, notes, and favorites.",
   "main": "eslint.config.js",
-  "keywords": [],
+  "keywords": [
+    "react",
+    "typescript",
+    "vite",
+    "firebase",
+    "books",
+    "reading-list"
+  ],
   "author": "",
   "license": "ISC"
 }
