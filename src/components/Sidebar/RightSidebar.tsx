@@ -73,11 +73,11 @@ const RightSidebar = ({ currentlyReading = [] }: RightSidebarProps) => {
     <div className="sticky top-[76px] animate-softRise [animation-delay:120ms]">
       <section className="library-panel rounded-[22px] p-4">
         <h2 className="mb-3 font-display text-lg font-semibold text-ink">
-          Currently Reading
+          Recently Favorited
         </h2>
         {currentlyReading.length === 0 ? (
           <p className="text-sm text-ink-muted">
-            Open a book and mark it as currently reading.
+            Add a book to favorites to see it here.
           </p>
         ) : (
           <ul className="space-y-2.5">

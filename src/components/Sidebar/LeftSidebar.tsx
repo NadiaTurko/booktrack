@@ -71,7 +71,6 @@ const LeftSidebar = ({ stats = {} }: LeftSidebarProps) => {
     total = 0,
     favorites = 0,
     finished = 0,
-    reading = 0,
     unread = 0,
   } = stats;
 
@@ -112,10 +111,10 @@ const LeftSidebar = ({ stats = {} }: LeftSidebarProps) => {
 
       <Section title="Smart Shelves">
         <NavItem
-          to="/favorites?shelf=to-read"
+          to="/favorites"
           icon={Sparkles}
-          label="Currently Reading"
-          count={reading}
+          label="Recently Favorited"
+          count={favorites}
           active={false}
         />
       </Section>

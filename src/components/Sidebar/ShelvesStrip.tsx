@@ -58,7 +58,6 @@ const ShelvesStrip = ({ stats = {} }: ShelvesStripProps) => {
     total = 0,
     favorites = 0,
     finished = 0,
-    reading = 0,
     unread = 0,
   } = stats;
 
@@ -94,10 +93,10 @@ const ShelvesStrip = ({ stats = {} }: ShelvesStripProps) => {
       active: onFavorites && shelf === "finished",
     },
     {
-      to: "/favorites?shelf=to-read",
+      to: "/favorites",
       icon: Sparkles,
-      label: "Reading",
-      count: reading,
+      label: "Recent Favs",
+      count: favorites,
       active: false,
     },
   ];
